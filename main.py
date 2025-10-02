@@ -35,24 +35,39 @@ def time_operations():
     "Demonatrate time shifting and scaling operations"
     
     "Generate original signal"
-    t, sin_signal = sinusoidal (duration = 2.0, frequency = 5.0, amplitude = 1)
+    t, sin_signal = sinusoidal(duration = 2.0, frequency = 5.0, amplitude = 1)
     
     "Time shifting"
-    t_shifted, signal_shifted = time_shift(t, sin_signal, shift_amount=0.75)
+    t_shifted, signal_shifted = time_shift(t, sin_signal, shift_amount=-0.75)
     plot_signal_comparison(t,sin_signal, t_shifted, signal_shifted,
                            "Original Sinusoidal Signal",
-                           "Time-Shifted Sginal (0.75 s delay)",
-                           "time_shift_comparison.png")
+                           "Time-Shifted Signal (0.75 s delay)",
+                           "sintime_shift_comparison.png")
+   
     "Time Scaling"
-    t_shifted, signal_shifted = time_shift(t, sin_signal, scale_factor=0.5)
-    plot_signal_signal_comparison(t,sin_signal, t_signal, signal_scaled,
+    t_shifted, signal_scaled = time_scale(t, sin_signal, scale_factor=0.25)
+    plot_signal_comparison(t,sin_signal, t_shifted, signal_scaled,
                                   "Original Sinusoidal Signal",
                                   "Time_Scaled Signal (compression:factor 0.5)",
-                                  "time_scale_comparison.png")
+                                  "sintime_scale_comparison.png")
+    t, unit_signal = unit_step(duration=3.0, step_time=1.0, amplitude = 1.0, sampling_rate=1000)
+    "Time shifting"
+    t_shifted, signal_shifted = time_shift(t, unit_signal, shift_amount=-0.75)
+    plot_signal_comparison(t,unit_signal, t_shifted, signal_shifted,
+                           "Original Unit Step Signal",
+                           "Time-Shifted Signal (0.75 s delay)",
+                           "unittime_shift_comparison.png")
+   
+    "Time Scaling"
+    t_shifted, signal_scaled = time_scale(t, unit_signal, scale_factor=0.25)
+    plot_signal_comparison(t,unit_signal, t_shifted, signal_scaled,
+                                  "Original Unit Step Signal",
+                                  "Time_Scaled Signal (compression:factor 0.5)",
+                                  "unittime_scale_comparison.png")
     
 def signal_generation():
     """Demonstrate different signal types."""
-    print("Demonstrating Signal Generation...")
+    
     
     plt.figure(figsize=(15, 10))
     
@@ -70,6 +85,8 @@ def signal_generation():
     plt.title('Unit Step')
     plt.grid(True, alpha=0.3)
    
+    plt.savefig("originalsignals.png")
+    
 def demo_all_operations():
     """Run all demonstrations."""
     signal_generation()
@@ -79,7 +96,7 @@ def demo_all_operations():
 if __name__ == "__main__":
     demo_all_operations()
     
-                
+       
     
     
     
