@@ -1,41 +1,41 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Sep 29 16:08:52 2025
-
-@author: Carli
+Python code to define functions which create signals and perform operations on them
 """
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 def sinusoidal (duration = 2.0, frequency = 5.0, amplitude = 1, phase = 0.0,sampling_rate= 1000): 
-    "Generate a sinusoidal signal"
-    "Parameters:"
-    "Duration: Signal duration in seconds"
-    "Frequency: Frequency in Hz"
-    "Amplitude: Signal amplitude"
-    "phase: Phase shift in radians"
-    "Sampling_rate: sampling rate in Hz"
-    "Returns:"
-    "- Time array"
-    "- Signal: Generated sinusoidal signal"
+    """
+    Generate a sinusoidal signal
+    Parameters:
+    Duration: Signal duration in seconds
+    Frequency: Frequency in Hz
+    Amplitude: Signal amplitude
+    phase: Phase shift in radians
+    Sampling_rate: sampling rate in Hz
+    Returns:
+    - Time array
+    - Signal: Generated sinusoidal signal
+    """
     t = np.linspace(0, duration, int(sampling_rate*duration), endpoint=False)
     signal = amplitude *np.sin(2*np.pi*frequency*t+phase)
        
     return t, signal
 
 def unit_step(duration=3.0, step_time=1.0, amplitude = 1.0, sampling_rate=1000):
-    "Generate a unit step signal"
-    "Parameters:"
-    "- duration: signal duration in seconds"
-    "- step_time: time when step occurs (seconds)"
-    "- amplitude: step amplitude"
-    "- sampling_rate: sampling rate in Hz"
+    """
+    Generate a unit step signal
+    Parameters:
+    - duration: signal duration in seconds
+    - step_time: time when step occurs (seconds)
+    - amplitude: step amplitude
+    - sampling_rate: sampling rate in Hz
     
-    "Returns:"
-    "-t2: time array"
-    "- signal2: generated unit step signal"
-    
+    Returns:
+    -t2: time array
+    - signal2: generated unit step signal
+    """
     t= np.linspace(0,duration,int(sampling_rate*duration), endpoint=False)
     signal = amplitude * (t>=step_time).astype(float)
     return t, signal

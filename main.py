@@ -3,6 +3,8 @@
 Created on Wed Oct  1 15:07:07 2025
 
 @author: Carli
+
+Python code used to plot the signals and operations defined in signal_functions 
 """
 
 import numpy as np
