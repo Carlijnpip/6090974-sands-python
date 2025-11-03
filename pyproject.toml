@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-package"
+version = "0.1.0"
+description = "Generates sinusoidal and unit step signals, modifies the signals through time-shifting and time-scaling, and plots them"
+
+authors = [ 
+    {name = "Carlijn Hes", email = ches@tudelft.nl"},
+]
+dependencies = ["numpy>=1.24.3", "matplotlib==3.10.7"]
